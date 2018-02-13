@@ -160,3 +160,61 @@ Call:
 ```C
 SL_DELETE(head, node);
 ```
+
+## Recipes
+
+Below are some common use cases for the above functions.
+
+### SL_FOREACH
+
+#### Print an entire list
+
+```C
+SL_FOREACH(head, node) printf("%d\n", node->key);
+```
+
+#### Delete an entire list
+
+See [SL_DELETE](#SL_DELETE).
+
+### SL_SEARCH
+
+#### Search by key
+
+```C
+/* For integers */
+int cmp(node_t *a, int key){
+	return a->key - key;
+}
+SL_SEARCH(head, cmp, 5, node);
+
+/* For strings */
+char *cmp(node_t *a, char *key){
+	return strcmp(a->key, key);
+}
+SL_SEARCH(head, cmp, "Hello, world!", node);
+
+/* For pointers */
+int cmp(node_t *a, void *ptr){
+	return (a->data.ptr == ptr) ? 0 : 1;
+}
+SL_SEARCH(head, cmp, ptr, node);
+```
+
+### SL_DELETE
+
+#### Delete a single node
+
+```C
+SL_DELETE(head, node);
+free(node);
+```
+
+#### Delete an entire list
+
+```C
+SL_FOREACH(head, node){
+	SL_DELETE(head, node);
+	free(node);
+}
+```
