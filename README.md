@@ -175,7 +175,7 @@ SL_FOREACH(head, node) printf("%d\n", node->key);
 
 #### Delete an entire list
 
-See [SL_DELETE](#SL_DELETE).
+See [SL_DELETE](#sl_delete-1).
 
 ### SL_SEARCH
 
