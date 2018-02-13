@@ -1,39 +1,6 @@
 #ifndef _LIST_H_
 #define _LIST_H_
 
-/*
- * ----= SINGLY-LINKED LIST EXAMPLE =----
- *
- * typedef struct node {
- *		int key;
- *		struct node *next;
- * } node_t;
- * 
- * node_t *head = NULL;
- * 
- * int main(){
- *		node_t *item;
- *
- *		// Allocate and populate item //
- *
- *		// Append item to list //
- *		SL_APPEND(head, item);
- *
- *		// Print list values //
- *		SL_ITER(head, item){
- *			printf("%d\n", item->key);
- *		}
- *
- *		// Delete list //
- *		SL_ITER(head, item){
- *			SL_DELETE(head, item);
- *			free(item);
- *		}
- * }
- *
- * --------------------------------------
-*/
-
 #define SL_APPEND(head, entry) do { \
 	if (head){ \
 		typeof(head) tmp = head; \
