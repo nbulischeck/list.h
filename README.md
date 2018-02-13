@@ -2,6 +2,34 @@
 
 As of right now, there are only functions available for singly-linked lists.
 
+## Basic Working Example
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include "list.h"
+
+typedef struct node {
+	int key;
+	struct node *next;
+} node_t;
+
+node_t *head = NULL;
+ 
+int main(){
+	node_t *item = malloc(sizeof(node_t));
+	item->key = 5;
+	item->next = NULL;
+	SL_APPEND(head, item);
+	SL_FOREACH(head, item) printf("%d\n", item->key);
+	SL_FOREACH(head, item){
+		SL_DELETE(head, item);
+		free(item);
+	}
+	return 0;
+}
+```
+
 ## Functions Available
 
 | Function Name | Arg 1 | Arg 2  | Arg 3 | Arg 4 |
