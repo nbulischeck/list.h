@@ -1,6 +1,6 @@
-#list.h
+# list.h
 
-##Functions Available
+## Functions Available
 
 
 | Function Name | Arg 1 | Arg 2  | Arg 3 | Arg 4 |
