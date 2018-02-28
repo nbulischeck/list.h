@@ -1,6 +1,6 @@
 # list.h
 
-As of right now, there are only functions available for singly-linked lists.
+Implementations for singly-linked and doubly-linked list functions.
 
 ## Basic Working Example
 
