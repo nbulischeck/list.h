@@ -34,14 +34,16 @@ int main(){
 
 | Function Name | Arg 1 | Arg 2  | Arg 3 | Arg 4 |
 | ------------- | ----- | ------ | ----- | ----- |
+| SL_EMPTY      | head  | int    |       |       |
 | SL_APPEND     | head  | node   |       |       |
 | SL_PREPEND    | head  | node   |       |       |
 | SL_SORT       | head  | fn *   |       |       |
+| SL_LAST       | head  | node   |       |       |
 | SL_REVERSE    | head  |        |       |       |
 | SL_CONCAT     | head  | head   |       |       |
-| SL_LENGTH     | head  | length |       |       |
+| SL_LENGTH     | head  | int    |       |       |
 | SL_FOREACH    | head  | node   |       |       |
-| SL_INDEX      | head  | node   | index |       |
+| SL_INDEX      | head  | node   | int   |       |
 | SL_SEARCH     | head  | fn *   | query | node  |
 | SL_DELETE     | head  | node   |       |       |
 
