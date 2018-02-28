@@ -1,14 +1,16 @@
 #ifndef _LIST_H_
 #define _LIST_H_
 
+/* Singly-linked Lists */
+
 #define SL_EMPTY(head, empty) \
 	empty = (head == NULL) ? 1 : 0;
 
 #define SL_APPEND(head, entry) do { \
 	if (head){ \
-		typeof(head) tmp = head; \
-		while (tmp->next != NULL){ tmp = tmp->next; } \
-		tmp->next = entry; \
+		typeof(head) _tmp = head; \
+		while (_tmp->next != NULL){ _tmp = _tmp->next; } \
+		_tmp->next = entry; \
 	} else { \
 		head = entry; \
 	} \
@@ -124,13 +126,74 @@
 } while (0)
 
 #define SL_DELETE(head, node) do { \
-	typeof(head) cur = head; \
+	typeof(head) _cur = head; \
 	if (node == head){ \
 		head = head->next; \
 	} else { \
-		while (cur->next && cur->next != node) \
-			cur = cur->next; \
-		cur->next = node->next; \
+		while (_cur->next && _cur->next != node) \
+			_cur = _cur->next; \
+		_cur->next = node->next; \
+	} \
+} while (0)
+
+/* Doubly-linked Lists */
+
+#define DL_EMPTY SL_EMPTY
+
+#define DL_APPEND(head, entry) do { \
+	if (head) { \
+		typeof(head) _tmp = head; \
+		while (_tmp->next != NULL){ _tmp = _tmp->next; } \
+		entry->prev = _tmp; \
+		_tmp->next = entry; \
+	} else { \
+		head = entry; \
+	} \
+} while (0)
+
+#define DL_PREPEND(head, entry) do { \
+	if(head){ \
+		entry->next = head; \
+		head->prev = entry; \
+	} \
+	head = entry; \
+} while (0)
+
+#define DL_SORT SL_SORT
+
+#define DL_REVERSE(head) do { \
+	typeof(head) _temp; \
+	while (head) { \
+		_temp = head->prev; \
+		head->prev = head->next; \
+		head->next = _temp; \
+		if (!head->prev) break; \
+		head = head->prev; \
+	} \
+} while (0)
+
+#define DL_LAST SL_LAST
+
+#define DL_CONCAT SL_CONCAT
+
+#define DL_LENGTH SL_LENGTH
+
+#define DL_FOREACH SL_FOREACH
+
+#define DL_INDEX SL_INDEX
+
+#define DL_SEARCH SL_SEARCH
+
+#define DL_DELETE(head, node) do { \
+	typeof(head) _cur = head; \
+	if (node == head){ \
+		head = head->next; \
+		head->prev = NULL; \
+	} else { \
+		while (_cur->next && _cur->next != node) \
+			_cur = _cur->next; \
+		_cur->prev->next = node->next; \
+		node->prev = _cur->prev; \
 	} \
 } while (0)
 
