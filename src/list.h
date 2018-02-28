@@ -1,6 +1,9 @@
 #ifndef _LIST_H_
 #define _LIST_H_
 
+#define SL_EMPTY(head, empty) \
+	empty = (head == NULL) ? 1 : 0;
+
 #define SL_APPEND(head, entry) do { \
 	if (head){ \
 		typeof(head) tmp = head; \
@@ -78,6 +81,11 @@
 	head = _prev; \
 } while (0)
 
+#define SL_LAST(head, node) do { \
+	node = head; \
+	while (node->next){ node = node->next; } \
+} while (0)
+
 #define SL_CONCAT(head1, head2) do { \
 	if (head1){ \
 		typeof(head1) _tmp = head1; \
@@ -86,13 +94,13 @@
 	} else { \
 		head1 = head2; \
 	} \
-} while(0)
+} while (0)
 
 #define SL_LENGTH(head, length) do { \
 	length = 0; \
 	typeof(head) _cur = head; \
 	while (_cur){ length++; _cur = _cur->next; } \
-} while(0)
+} while (0)
 
 #define SL_FOREACH(head, node) \
 	for(node = head; node; node = node->next)
@@ -104,7 +112,7 @@
 		if (!_i--) node = _cur; \
 		_cur = _cur->next; \
 	} \
-} while(0)
+} while (0)
 
 #define SL_SEARCH(head, cmp, query, node) do { \
 	typeof(head) _cur = head; \
@@ -113,7 +121,7 @@
 		_cur = _cur->next; \
 	} \
 	node = _cur; \
-} while(0)
+} while (0)
 
 #define SL_DELETE(head, node) do { \
 	typeof(head) cur = head; \

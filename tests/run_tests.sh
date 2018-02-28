@@ -1,7 +1,7 @@
 #!/bin/bash
 PASS=0
 FAIL=0
-TESTS=10
+TESTS=12
 
 echo -e "\n\e[92m===================================\e[0m\n"
 

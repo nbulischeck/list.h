@@ -1,4 +1,4 @@
-//Strings
+//Last Node
 
 #include <stdio.h>
 #include <string.h>
@@ -37,17 +37,12 @@ int main(){
 
 	printf("Original List:\n");
 	SL_FOREACH(head, tmp) printf("%s\n", tmp->key);
+	SL_LAST(head, tmp);
+	printf("Last Element: %s\n", tmp->key);
 	SL_SORT(head, cmp_sort);
 	printf("Sorted List:\n");
 	SL_FOREACH(head, tmp) printf("%s\n", tmp->key);
-	SL_REVERSE(head);
-	printf("Reversed List:\n");
-	SL_FOREACH(head, tmp) printf("%s\n", tmp->key);
-	SL_INDEX(head, tmp, 1);
-	SL_SEARCH(head, cmp_search, "RedString", tmp);
-	printf("Deleting 'RedString':\n");
-	SL_DELETE(head, tmp);
-	free(tmp);
-	SL_FOREACH(head, tmp) printf("%s\n", tmp->key);
+	SL_LAST(head, tmp);
+	printf("Last Element: %s\n", tmp->key);
 	return 0;
 }
