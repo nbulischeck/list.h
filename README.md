@@ -32,6 +32,9 @@ int main(){
 
 ## Functions Available
 
+**Every function has a doubly-linked list counterpart.** The doubly-linked list
+version takes the exact same arguments. They are referred to as `DL_` and the function name. For example, `DL_EMPTY` and `DL_APPEND`.
+
 | Function Name | Arg 1 | Arg 2  | Arg 3 | Arg 4 |
 | ------------- | ----- | ------ | ----- | ----- |
 | SL_EMPTY      | head  | int    |       |       |
