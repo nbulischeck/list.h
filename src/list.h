@@ -107,6 +107,9 @@
 #define SL_FOREACH(head, node) \
 	for(node = head; node; node = node->next)
 
+#define SL_FOREACH_SAFE(head, node, tmp) \
+	for (node = head, tmp = node->next; node; node = tmp)
+
 #define SL_INDEX(head, node, target) do { \
 	int _i = target; \
 	typeof(head) _cur = head; \
@@ -179,6 +182,8 @@
 #define DL_LENGTH SL_LENGTH
 
 #define DL_FOREACH SL_FOREACH
+
+#define DL_FOREACH_SAFE SL_FOREACH_SAFE
 
 #define DL_INDEX SL_INDEX
 

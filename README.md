@@ -17,15 +17,20 @@ typedef struct node {
 node_t *head = NULL;
  
 int main(){
-	node_t *item = malloc(sizeof(node_t));
+	node_t *item, *tmp;
+
+    item = malloc(sizeof(node_t));
 	item->key = 5;
 	item->next = NULL;
 	SL_APPEND(head, item);
+
 	SL_FOREACH(head, item) printf("%d\n", item->key);
-	SL_FOREACH(head, item){
+
+	SL_FOREACH_SAFE(head, item, tmp){
 		SL_DELETE(head, item);
 		free(item);
 	}
+
 	return 0;
 }
 ```
@@ -35,20 +40,21 @@ int main(){
 **Every function has a doubly-linked list counterpart.** The doubly-linked list
 version takes the exact same arguments. They are referred to as `DL_` and the function name. For example, `DL_EMPTY` and `DL_APPEND`.
 
-| Function Name | Arg 1 | Arg 2  | Arg 3 | Arg 4 |
-| ------------- | ----- | ------ | ----- | ----- |
-| SL_EMPTY      | head  | int    |       |       |
-| SL_APPEND     | head  | node   |       |       |
-| SL_PREPEND    | head  | node   |       |       |
-| SL_SORT       | head  | fn *   |       |       |
-| SL_LAST       | head  | node   |       |       |
-| SL_REVERSE    | head  |        |       |       |
-| SL_CONCAT     | head  | head   |       |       |
-| SL_LENGTH     | head  | int    |       |       |
-| SL_FOREACH    | head  | node   |       |       |
-| SL_INDEX      | head  | node   | int   |       |
-| SL_SEARCH     | head  | fn *   | query | node  |
-| SL_DELETE     | head  | node   |       |       |
+|  Function Name  | Arg 1 | Arg 2  | Arg 3 | Arg 4 |
+|  -------------  | ----- | ------ | ----- | ----- |
+| SL_EMPTY        | head  | int    |       |       |
+| SL_APPEND       | head  | node   |       |       |
+| SL_PREPEND      | head  | node   |       |       |
+| SL_SORT         | head  | fn *   |       |       |
+| SL_LAST         | head  | node   |       |       |
+| SL_REVERSE      | head  |        |       |       |
+| SL_CONCAT       | head  | head   |       |       |
+| SL_LENGTH       | head  | int    |       |       |
+| SL_FOREACH      | head  | node   |       |       |
+| SL_FOREACH_SAFE | head  | node   | node  |       |
+| SL_INDEX        | head  | node   | int   |       |
+| SL_SEARCH       | head  | fn *   | query | node  |
+| SL_DELETE       | head  | node   |       |       |
 
 
 ### SL_APPEND
@@ -133,7 +139,7 @@ SL_LENGTH(head, length);
 
 ### SL_FOREACH
 
-This function iterates over the length of the list and returns the node at each step. This is helpful when operating on every node in the list (printing the list, altering each node, or destroying the list).
+This function iterates over the length of the list and returns the node at each step. This is helpful when operating on every node in the list (printing the list or altering each node).
 
 Argument 1: The head node of the list
 
@@ -142,6 +148,21 @@ Argument 2: A temporary node to store each intermediary node
 Call:
 ```C
 SL_FOREACH(head, node);
+```
+
+### SL_FOREACH_SAFE
+
+This function iterates over the length of the list and returns the node at each step. This is helpful when operating on every node in the list (printing the list, altering each node, or destroying the list).
+
+Argument 1: The head node of the list
+
+Argument 2: A temporary node to store each intermediary node
+
+Argument 3: A temporary node to safely store the next node
+
+Call:
+```C
+SL_FOREACH_SAFE(head, node, tmp);
 ```
 
 ### SL_INDEX
