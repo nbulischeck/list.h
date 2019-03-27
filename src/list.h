@@ -1,5 +1,5 @@
-#ifndef _LIST_H_
-#define _LIST_H_
+#ifndef LIST_H
+#define LIST_H
 
 /* Singly-linked Lists */
 
@@ -202,4 +202,4 @@
 	} \
 } while (0)
 
-#endif /* _LIST_H_ */
+#endif
