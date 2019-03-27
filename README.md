@@ -267,7 +267,7 @@ free(node);
 #### Delete an entire list
 
 ```C
-SL_FOREACH(head, node){
+SL_FOREACH_SAFE(head, node, tmp){
 	SL_DELETE(head, node);
 	free(node);
 }
