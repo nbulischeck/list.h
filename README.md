@@ -227,6 +227,8 @@ Below are some common use cases for the above functions.
 SL_FOREACH(head, node) printf("%d\n", node->key);
 ```
 
+### SL_FOREACH_SAFE
+
 #### Delete an entire list
 
 See [SL_DELETE](#sl_delete-1).
