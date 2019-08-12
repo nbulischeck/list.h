@@ -10,28 +10,28 @@ Implementations for singly-linked and doubly-linked list functions.
 #include "list.h"
 
 typedef struct node {
-	int key;
-	struct node *next;
+    int key;
+    struct node *next;
 } node_t;
 
 node_t *head = NULL;
  
 int main(){
-	node_t *item, *tmp;
+    node_t *item, *tmp;
 
     item = malloc(sizeof(node_t));
-	item->key = 5;
-	item->next = NULL;
-	SL_APPEND(head, item);
+    item->key = 5;
+    item->next = NULL;
+    SL_APPEND(head, item);
 
-	SL_FOREACH(head, item) printf("%d\n", item->key);
+    SL_FOREACH(head, item) printf("%d\n", item->key);
 
-	SL_FOREACH_SAFE(head, item, tmp){
-		SL_DELETE(head, item);
-		free(item);
-	}
+    SL_FOREACH_SAFE(head, item, tmp){
+        SL_DELETE(head, item);
+        free(item);
+    }
 
-	return 0;
+    return 0;
 }
 ```
 
@@ -240,19 +240,19 @@ See [SL_DELETE](#sl_delete-1).
 ```C
 /* For integers */
 int cmp(node_t *a, int key){
-	return a->key - key;
+    return a->key - key;
 }
 SL_SEARCH(head, cmp, 5, node);
 
 /* For strings */
 char *cmp(node_t *a, char *key){
-	return strcmp(a->key, key);
+    return strcmp(a->key, key);
 }
 SL_SEARCH(head, cmp, "Hello, world!", node);
 
 /* For pointers */
 int cmp(node_t *a, void *ptr){
-	return (a->data.ptr == ptr) ? 0 : 1;
+    return (a->data.ptr == ptr) ? 0 : 1;
 }
 SL_SEARCH(head, cmp, ptr, node);
 ```
@@ -270,7 +270,7 @@ free(node);
 
 ```C
 SL_FOREACH_SAFE(head, node, tmp){
-	SL_DELETE(head, node);
-	free(node);
+    SL_DELETE(head, node);
+    free(node);
 }
 ```
