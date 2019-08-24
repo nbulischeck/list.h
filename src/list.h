@@ -190,16 +190,10 @@
 #define DL_SEARCH SL_SEARCH
 
 #define DL_DELETE(head, node) do { \
-	typeof(head) _cur = head; \
-	if (node == head){ \
-		head = head->next; \
-		head->prev = NULL; \
-	} else { \
-		while (_cur->next && _cur->next != node) \
-			_cur = _cur->next; \
-		_cur->prev->next = node->next; \
-		node->prev = _cur->prev; \
-	} \
+    if (node->prev) \
+        node->prev->next = node->next; \
+    if (node->next) \
+        node->next->prev = node->prev; \
 } while (0)
 
 #endif
