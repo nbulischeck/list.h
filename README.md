@@ -245,7 +245,7 @@ int cmp(node_t *a, int key){
 SL_SEARCH(head, cmp, 5, node);
 
 /* For strings */
-char *cmp(node_t *a, char *key){
+int cmp(node_t *a, char *key){
     return strcmp(a->key, key);
 }
 SL_SEARCH(head, cmp, "Hello, world!", node);
