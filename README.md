@@ -72,7 +72,7 @@ SL_APPEND(head, node);
 
 ### SL_PREPEND
 
-This function prepends a node to the end of a linked list.
+This function prepends a node to the start of a linked list.
 
 Argument 1: The head node of the list
 
@@ -80,7 +80,7 @@ Argument 2: The node to be prepended to the list
 
 Call:
 ```C
-SL_APPEND(head, node);
+SL_PREPEND(head, node);
 ```
 
 ### SL_SORT
