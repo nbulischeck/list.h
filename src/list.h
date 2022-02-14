@@ -108,7 +108,7 @@
 	for(node = head; node; node = node->next)
 
 #define SL_FOREACH_SAFE(head, node, tmp) \
-	for (node = head, tmp = node->next; node; node = tmp)
+	for (node = head, tmp = node->next; node; node = tmp, tmp = node->next)
 
 #define SL_INDEX(head, node, target) do { \
 	int _i = target; \
