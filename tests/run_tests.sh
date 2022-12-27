@@ -1,11 +1,11 @@
 #!/bin/bash
 PASS=0
 FAIL=0
-TESTS=16
+TESTS=17
 
 echo -e "\n\e[92m===================================\e[0m\n"
 
-for ((i=1;i<=TESTS;i++)); do
+for ((i=0;i<TESTS;i++)); do
 	if "tests/test${i}" 2>&1 | diff -q "tests/test${i}.res" - >/dev/null; then
 		read -r CASE < "tests/test${i}.c"
 		CASE=$(echo ${CASE} | sed 's/\/\///g')
