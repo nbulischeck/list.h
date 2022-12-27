@@ -8,7 +8,7 @@
 
 #define SL_APPEND(head, entry) do { \
 	if (head){ \
-		typeof(head) _tmp = head; \
+		__typeof__(head) _tmp = head; \
 		while (_tmp->next != NULL){ _tmp = _tmp->next; } \
 		_tmp->next = entry; \
 	} else { \
@@ -27,7 +27,7 @@
 */
 
 #define SL_SORT(head, cmp) do { \
-	typeof(head) _p, _q, _e, _tail; \
+	__typeof__(head) _p, _q, _e, _tail; \
 	int _insize, _nmerges, _psize, _qsize, _i; \
 	if (head){ \
 		_insize = 1; \
@@ -73,7 +73,7 @@
 } while (0)
 
 #define SL_REVERSE(head) do { \
-	typeof(head) _cur = head, _prev = NULL, _next; \
+	__typeof__(head) _cur = head, _prev = NULL, _next; \
 	while (_cur) { \
 		_next = _cur->next; \
 		_cur->next = _prev; \
@@ -90,7 +90,7 @@
 
 #define SL_CONCAT(head1, head2) do { \
 	if (head1){ \
-		typeof(head1) _tmp = head1; \
+		__typeof__(head1) _tmp = head1; \
 		while (_tmp->next){ _tmp = _tmp->next; } \
 		_tmp->next = head2; \
 	} else { \
@@ -100,7 +100,7 @@
 
 #define SL_LENGTH(head, length) do { \
 	length = 0; \
-	typeof(head) _cur = head; \
+	__typeof__(head) _cur = head; \
 	while (_cur){ length++; _cur = _cur->next; } \
 } while (0)
 
@@ -112,7 +112,7 @@
 
 #define SL_INDEX(head, node, target) do { \
 	int _i = target; \
-	typeof(head) _cur = head; \
+	__typeof__(head) _cur = head; \
 	while (_cur){ \
 		if (!_i--) node = _cur; \
 		_cur = _cur->next; \
@@ -120,7 +120,7 @@
 } while (0)
 
 #define SL_SEARCH(head, cmp, query, node) do { \
-	typeof(head) _cur = head; \
+	__typeof__(head) _cur = head; \
 	while (_cur){ \
 		if (cmp(_cur, query) == 0) break; \
 		_cur = _cur->next; \
@@ -129,7 +129,7 @@
 } while (0)
 
 #define SL_DELETE(head, node) do { \
-	typeof(head) _cur = head; \
+	__typeof__(head) _cur = head; \
 	if (node == head){ \
 		head = head->next; \
 	} else { \
@@ -145,7 +145,7 @@
 
 #define DL_APPEND(head, entry) do { \
 	if (head) { \
-		typeof(head) _tmp = head; \
+		__typeof__(head) _tmp = head; \
 		while (_tmp->next != NULL){ _tmp = _tmp->next; } \
 		entry->prev = _tmp; \
 		_tmp->next = entry; \
@@ -165,7 +165,7 @@
 #define DL_SORT SL_SORT
 
 #define DL_REVERSE(head) do { \
-	typeof(head) _temp; \
+	__typeof__(head) _temp; \
 	while (head) { \
 		_temp = head->prev; \
 		head->prev = head->next; \
