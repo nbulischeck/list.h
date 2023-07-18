@@ -31,5 +31,7 @@ int main(){
 	DL_SEARCH(head, cmp, 10, item);
 	DL_DELETE(head, item);
 	DL_FOREACH(head, item) printf("%d\n", item->key);
+	DL_DELETE(head, head);
+	DL_FOREACH(head, item) printf("%d\n", item->key);
 	return 0;
 }
